@@ -137,6 +137,7 @@
     ]
   },
   "devDependencies": {
-    "babel-preset-mobx": "^2.0.0"
+    "babel-preset-mobx": "^2.0.0",
+    "flow-typed": "^2.6.2"
   }
 }
