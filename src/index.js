@@ -5,8 +5,13 @@ import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import Invoice from './models/Invoice';
 import { Provider } from 'mobx-react';
+import { onPatch } from 'mobx-state-tree';
 
 const invoice = Invoice.create({ currency: 'CAD' });
+
+onPatch(invoice, patch => {
+   console.log(patch);
+});
 
 ReactDOM.render(
    <Provider
