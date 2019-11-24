@@ -1,18 +1,21 @@
 // @flow
 
 import { types } from 'mobx-state-tree';
+import ItemList from './ItemList';
 
 type InvoiceType = {
    currency: string,
    is_paid: boolean,
    status: string,
-   markPaid: () => void
+   itemList: any,
+   markPaid: () => void,
 };
 
 const Invoice: InvoiceType = types
    .model('Invoice', {
       currency: types.string,
-      is_paid: false
+      is_paid: false,
+      itemList: types.optional(ItemList, {items: []})
    })
    .actions((self: InvoiceType) => ({
       markPaid(): void
