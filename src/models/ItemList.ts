@@ -6,7 +6,7 @@ const ItemList = types
       items: types.array(Item)
    })
    .actions(self => ({
-      add(item)
+      add(item: any)
       {
          self.items.push(item);
       }

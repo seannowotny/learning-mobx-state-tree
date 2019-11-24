@@ -1,12 +1,14 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
 import './App.css';
-import Invoice from '../models/Invoice';
-import { observer, inject } from 'mobx-react';
+import { observer } from 'mobx-react-lite';
+import { InvoiceContext } from '../models/Invoice';
 
-function App({ invoice })
+function App()
 {
-  const handleSubmit = (e) =>
+  const invoice = useContext(InvoiceContext);
+
+  const handleSubmit = (e: any) =>
   {
     const name = e.target.name.value;
     const quantity = e.target.quantity.value;
@@ -51,4 +53,4 @@ function App({ invoice })
   );
 }
 
-export default inject('invoice')(observer(App));
+export default observer(App);

@@ -1,5 +1,6 @@
 import { types } from 'mobx-state-tree';
 import ItemList from './ItemList';
+import { createContext } from 'react';
 
 const Invoice = types
    .model('Invoice', {
@@ -20,4 +21,5 @@ const Invoice = types
       }
    }));
 
-export default Invoice;
+export const invoice = Invoice.create({ currency: 'CAD' });
+export const InvoiceContext = createContext(invoice);
