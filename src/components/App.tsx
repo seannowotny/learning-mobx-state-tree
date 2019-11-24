@@ -4,14 +4,7 @@ import './App.css';
 import Invoice from '../models/Invoice';
 import { observer, inject } from 'mobx-react';
 
-import type { Node } from 'react';
-
-type InvoiceType = typeof(Invoice);
-type PropTypes = { 
-  invoice: InvoiceType 
-};
-
-function App({ invoice }: PropTypes): Node 
+function App({ invoice })
 {
   const handleSubmit = (e) =>
   {
