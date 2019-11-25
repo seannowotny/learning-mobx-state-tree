@@ -6,6 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import { onPatch } from 'mobx-state-tree';
 import makeInspectable from 'mobx-devtools-mst';
 import { invoice } from './models/Invoice';
+import { connectReduxDevtools } from "mst-middlewares"
+
+connectReduxDevtools(require("remotedev"), invoice);
 
 onPatch(invoice, patch => {
    console.log(patch);
