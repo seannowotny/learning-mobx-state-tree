@@ -3,10 +3,10 @@ import React, { useContext, SyntheticEvent } from 'react';
 import './App.css';
 import { observer } from 'mobx-react-lite';
 import { InvoiceContext } from '../models/Invoice';
-import { Item } from './Item';
-import { Item as ItemModel } from '../models/Item';
+import Item from './Item';
+import { Item as ItemModel, ItemType } from '../models/Item';
 
-function App()
+export default observer(() =>
 {
   const invoice = useContext(InvoiceContext);
 
@@ -32,7 +32,7 @@ function App()
     <div className="App">
       <h1>{invoice.status}</h1>
       {! invoice.is_paid &&
-        <button onClick={invoice.markPaid}>Pay</button>
+        <button onClick={() => invoice.markPaid()}>Pay</button>
       }
 
       <form onSubmit={handleSubmit}>
@@ -55,12 +55,10 @@ function App()
       </form>
 
       <ul>
-        {invoice.itemList.items.map((item, i) => (
+        {invoice.itemList.items.map((item: ItemType, i: number) => (
           <Item item={item} key={i} />
         ))}
       </ul>
     </div>
   );
-}
-
-export default observer(App);
+});
