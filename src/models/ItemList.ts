@@ -1,7 +1,5 @@
-import { types, Instance } from 'mobx-state-tree';
-import { Item } from './Item';
-
-type ItemType = Instance<typeof Item>;
+import { types } from 'mobx-state-tree';
+import { Item, ItemType } from './Item';
 
 export const ItemList = types
    .model('ItemList', {

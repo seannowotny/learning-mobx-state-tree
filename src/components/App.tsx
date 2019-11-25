@@ -3,13 +3,8 @@ import React, { useContext, SyntheticEvent } from 'react';
 import './App.css';
 import { observer } from 'mobx-react-lite';
 import { InvoiceContext } from '../models/Invoice';
-
-interface FormElements extends HTMLCollection
-{
-  name: HTMLInputElement;
-  quantity: HTMLInputElement;
-  price: HTMLInputElement;
-}
+import { Item } from './Item';
+import { Item as ItemModel } from '../models/Item';
 
 function App()
 {
@@ -17,18 +12,18 @@ function App()
 
   const handleSubmit = (e: any) =>
   {
-    // console.log(typeof e);
+    e.preventDefault();
 
     const name = e.target.name.value;
     const quantity = e.target.quantity.value;
     const price = e.target.price.value;
 
-    e.preventDefault();
-    invoice.itemList.add({
+    const itemModel = ItemModel.create({
       name: name,
       quantity: parseInt(quantity, 10),
       price: parseFloat(price)
     });
+    invoice.itemList.add(itemModel);
     e.target.reset();
     e.target.name.focus();
   }
@@ -58,6 +53,12 @@ function App()
         </label>
         <button type="submit">Add</button>
       </form>
+
+      <ul>
+        {invoice.itemList.items.map((item, i) => (
+          <Item item={item} key={i} />
+        ))}
+      </ul>
     </div>
   );
 }
