@@ -1,8 +1,15 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, SyntheticEvent } from 'react';
 import './App.css';
 import { observer } from 'mobx-react-lite';
 import { InvoiceContext } from '../models/Invoice';
+
+interface FormElements extends HTMLCollection
+{
+  name: HTMLInputElement;
+  quantity: HTMLInputElement;
+  price: HTMLInputElement;
+}
 
 function App()
 {
@@ -10,6 +17,8 @@ function App()
 
   const handleSubmit = (e: any) =>
   {
+    // console.log(typeof e);
+
     const name = e.target.name.value;
     const quantity = e.target.quantity.value;
     const price = e.target.price.value;

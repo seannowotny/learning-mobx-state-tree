@@ -1,15 +1,17 @@
-import { types } from 'mobx-state-tree';
-import Item from './Item';
+import { types, Instance } from 'mobx-state-tree';
+import { Item } from './Item';
 
-const ItemList = types
+type ItemType = Instance<typeof Item>;
+
+export const ItemList = types
    .model('ItemList', {
       items: types.array(Item)
    })
    .actions(self => ({
-      add(item: any)
+      add(item: ItemType)
       {
          self.items.push(item);
       }
    }));
 
-export default ItemList;
+export const itemList = ItemList.create();

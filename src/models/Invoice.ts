@@ -1,5 +1,5 @@
 import { types } from 'mobx-state-tree';
-import ItemList from './ItemList';
+import { ItemList } from './ItemList';
 import { createContext } from 'react';
 
 const Invoice = types
