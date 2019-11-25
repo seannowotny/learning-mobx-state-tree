@@ -16,6 +16,12 @@ export const ItemList = types
       {
          self.items.splice(self.items.indexOf(item), 1);
       }
+   }))
+   .views(self => ({
+      get total()
+      {
+         return self.items.reduce((sum: number, item: ItemType) => sum + item.total, 0);
+      }
    }));
 
 export const itemList = ItemList.create();

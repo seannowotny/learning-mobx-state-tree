@@ -54,6 +54,8 @@ export default observer(() =>
         <button type="submit">Add</button>
       </form>
 
+      <h2>Total is ${invoice.itemList.total.toFixed(2)}</h2>
+
       <ul>
         {invoice.itemList.items.map((item: ItemType, i: number) => (
           <Item item={item} key={i} />
