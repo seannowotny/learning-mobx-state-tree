@@ -1,8 +1,10 @@
-import { types } from 'mobx-state-tree';
+import { types, Instance } from 'mobx-state-tree';
 import { ItemList } from './ItemList';
 import { createContext } from 'react';
 
-const Invoice = types
+export type InvoiceType = Instance<typeof Invoice>;
+
+export const Invoice = types
    .model('Invoice', {
       currency: types.string,
       is_paid: false,
@@ -20,6 +22,3 @@ const Invoice = types
          return self.is_paid ? "Paid": "Not Paid";
       }
    }));
-
-export const invoice = Invoice.create({ currency: 'CAD' });
-export const InvoiceContext = createContext(invoice);

@@ -4,23 +4,16 @@ import './index.css';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { onPatch } from 'mobx-state-tree';
-import { invoice } from './models/Invoice';
 import { connectReduxDevtools } from "mst-middlewares"
+import { rootStore } from './models/rootStore';
 
-connectReduxDevtools(require("remotedev"), invoice);
+connectReduxDevtools(require("remotedev"), rootStore);
 
-onPatch(invoice, patch => {
+onPatch(rootStore, patch => {
    console.log(patch);
 });
 
-ReactDOM.render(
-   // <Provider
-   // invoice={invoice}
-   // >
-      <App/>,
-   // </Provider>
-   document.getElementById('root')
-);
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
