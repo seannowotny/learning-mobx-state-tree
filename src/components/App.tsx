@@ -4,11 +4,11 @@ import './App.css';
 import { observer } from 'mobx-react-lite';
 import Item from './Item';
 import { Item as ItemModel, ItemType } from '../models/Item';
-import { rootStoreContext } from '../models/rootStore';
+import { invoiceContext } from '../models/rootStore';
 
 export default observer(() =>
 {
-  const rootStore = useContext(rootStoreContext);
+  const invoiceState = useContext(invoiceContext);
 
   const handleSubmit = (e: any) =>
   {
@@ -23,16 +23,16 @@ export default observer(() =>
       quantity: parseInt(quantity, 10),
       price: parseFloat(price)
     });
-    rootStore.invoice.itemList.add(itemModel);
+    invoiceState.itemList.add(itemModel);
     e.target.reset();
     e.target.name.focus();
   }
 
   return (
     <div className="App">
-      <h1>{rootStore.invoice.status}</h1>
-      {! rootStore.invoice.is_paid &&
-        <button onClick={() => rootStore.invoice.markPaid()}>Pay</button>
+      <h1>{invoiceState.status}</h1>
+      {! invoiceState.is_paid &&
+        <button onClick={() => invoiceState.markPaid()}>Pay</button>
       }
 
       <form onSubmit={handleSubmit}>
@@ -54,10 +54,10 @@ export default observer(() =>
         <button type="submit">Add</button>
       </form>
 
-      <h2>Total is ${rootStore.invoice.itemList.total.toFixed(2)}</h2>
+      <h2>Total is ${invoiceState.itemList.total.toFixed(2)}</h2>
 
       <ul>
-        {rootStore.invoice.itemList.items.map((item: ItemType, i: number) => (
+        {invoiceState.itemList.items.map((item: ItemType, i: number) => (
           <Item item={item} key={i} />
         ))}
       </ul>

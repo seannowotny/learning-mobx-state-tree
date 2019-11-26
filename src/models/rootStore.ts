@@ -9,3 +9,4 @@ const RootStore = types
 
 export const rootStore = RootStore.create({ invoice: Invoice.create({ currency: 'CAD' }) });
 export const rootStoreContext = createContext(rootStore);
+export const invoiceContext = createContext(rootStore.invoice);
