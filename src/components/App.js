@@ -4,7 +4,8 @@ import React, { useContext } from 'react';
 import './App.css';
 import { observer } from 'mobx-react-lite';
 import { rootStoreContext, RootStore } from '../stores/rootStore';
-import Item from '../stores/models/Item';
+import ItemModel from '../stores/models/Item';
+import Item from './Item';
 
 export default observer(() =>
 {
@@ -18,23 +19,22 @@ export default observer(() =>
     const quantity = e.target.quantity.value;
     const price = e.target.price.value;
 
-    const itemModel = new Item({
-      parent: rootStore.invoice.items,
+    const itemModel = new ItemModel({
+      parent: rootStore.invoice.itemList,
       name: name, 
       quantity: parseInt(quantity, 10), 
       price: parseFloat(price)
     });
 
-    rootStore.invoice.items.add(itemModel);
+    rootStore.invoice.itemList.add(itemModel);
     e.target.reset();
     e.target.name.focus();
   }
 
   return (
     <div className="App">
-      <h1>Test</h1>
-      {/* <h1>{rootStore.invoice.status}</h1>
-      {! rootStore.invoice.is_paid &&
+      <h1>{rootStore.invoice.isPaid ? 'Paid' : 'Not Paid'}</h1>
+      {! rootStore.invoice.itemList &&
         <button onClick={() => rootStore.invoice.markPaid()}>Pay</button>
       }
 
@@ -57,13 +57,13 @@ export default observer(() =>
         <button type="submit">Add</button>
       </form>
 
-      <h2>Total is ${rootStore.invoice.items.total.toFixed(2)}</h2>
+      <h2>Total is ${rootStore.invoice.itemList.total.toFixed(2)}</h2>
 
       <ul>
-        {rootStore.invoice.items.items.map((item: ItemType, i: number) => (
+        {rootStore.invoice.itemList.items.map((item: Item, i: number) => (
           <Item item={item} key={i} />
         ))}
-      </ul> */}
+      </ul>
     </div>
   );
 });
