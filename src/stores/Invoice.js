@@ -11,11 +11,11 @@ export default class Invoice
    //    this.rootStore = rootStore;
    // }
 
-   // rootStore: RootStore;
+   @observable rootStore: RootStore;
    
    @observable currency: string = 'CAD';
-   @observable isPaid: boolean;
-   @observable itemList: ItemList;
+   @observable isPaid: boolean = false;
+   @observable itemList: ItemList = new ItemList();
 
    @action markPaid(): void
    {

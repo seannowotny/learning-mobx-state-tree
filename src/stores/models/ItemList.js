@@ -17,7 +17,7 @@ export default class ItemList
       this.items.splice(this.items.indexOf(item), 1);
    }
 
-   @computed total()
+   @computed get total()
    {
       return this.items.reduce((sum: number, item: Item) => sum + item.total, 0);
    }
