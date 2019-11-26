@@ -2,7 +2,7 @@
 
 import { action, observable } from 'mobx';
 import ItemList from './models/ItemList';
-// import { RootStore } from './rootStore';
+import { RootStore } from './rootStore';
 
 export default class Invoice
 {
