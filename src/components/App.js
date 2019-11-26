@@ -57,13 +57,13 @@ export default observer(() =>
         <button type="submit">Add</button>
       </form>
 
-      <h2>Total is ${rootStore.invoice.itemList.total.toFixed(2)}</h2>
+      {/* <h2>Total is ${rootStore.invoice.itemList.total().toFixed(2)}</h2> */}
 
-      <ul>
+      {/* <ul>
         {rootStore.invoice.itemList.items.map((item: Item, i: number) => (
           <Item item={item} key={i} />
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 });

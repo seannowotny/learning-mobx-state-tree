@@ -2,11 +2,10 @@
 
 import Item from './Item';
 import { observable, action, computed } from 'mobx';
-import { IRemover } from '../interfaces/IRemover';
 
-export default class ItemList extends IRemover
+export default class ItemList
 {
-   @observable items: Item[];
+   @observable items: Item[] = [];
 
    @action add(item: Item)
    {
@@ -18,7 +17,7 @@ export default class ItemList extends IRemover
       this.items.splice(this.items.indexOf(item), 1);
    }
 
-   @computed get total()
+   @computed total()
    {
       return this.items.reduce((sum: number, item: Item) => sum + item.total, 0);
    }
