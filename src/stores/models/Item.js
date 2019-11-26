@@ -3,17 +3,27 @@
 import { observable, action, computed } from 'mobx';
 import { IRemover } from '../interfaces/IRemover';
 
+type params = {
+   parent: IRemover, 
+   name: string, 
+   quantity: number, 
+   price: number
+}
+
 export default class Item
 {
-   constructor(parent: IRemover)
+   constructor({parent, name, quantity, price}: params)
    {
       this.parent = parent;
+      this.name = name;
+      this.quantity = quantity;
+      this.price = price;
    }
 
    @observable parent: IRemover;
    @observable quantity: number;
    @observable price: number;
-   @observable name: number;
+   @observable name: string;
 
    @action increment = () => this.quantity++;
 

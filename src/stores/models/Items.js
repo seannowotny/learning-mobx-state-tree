@@ -4,7 +4,7 @@ import Item from './Item';
 import { observable, action, computed } from 'mobx';
 import { IRemover } from '../interfaces/IRemover';
 
-export default class ItemList extends IRemover
+export default class Items extends IRemover
 {
    @observable items: Item[];
 

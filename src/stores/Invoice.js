@@ -1,7 +1,7 @@
 // @flow
 
 import { action, observable } from 'mobx';
-import ItemList from './models/ItemList';
+import ItemList from './models/Items';
 // import { RootStore } from './rootStore';
 
 export default class Invoice
@@ -15,7 +15,7 @@ export default class Invoice
    
    @observable currency: string = 'CAD';
    @observable isPaid: boolean;
-   @observable itemList: ItemList;
+   @observable items: ItemList;
 
    @action markPaid(): void
    {
