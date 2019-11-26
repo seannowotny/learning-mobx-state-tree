@@ -1,5 +1,6 @@
+// @flow
 
-import React, { useContext, SyntheticEvent } from 'react';
+import React, { useContext } from 'react';
 import './App.css';
 import { observer } from 'mobx-react-lite';
 // import { InvoiceContext } from '../models/Invoice';

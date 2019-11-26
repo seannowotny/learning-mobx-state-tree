@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
-import { ItemType } from '../models/Item';
+// @flow
+
+import React from 'react';
+// import  { ItemType } from '../models/Item';
 import { observer } from 'mobx-react-lite';
 
-interface Props
-{
-  item: ItemType
-}
+// type Props =
+// {
+//   item: ItemType
+// }
 
 export default observer(({ item }: Props) => 
   <li>
