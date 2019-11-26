@@ -1,13 +1,12 @@
 // @flow
 
 import React from 'react';
-// import  { ItemType } from '../models/Item';
 import { observer } from 'mobx-react-lite';
+import Item from '../stores/models/Item';
 
-// type Props =
-// {
-//   item: ItemType
-// }
+type Props = {
+  item: Item
+};
 
 export default observer(({ item }: Props) => 
   <li>
