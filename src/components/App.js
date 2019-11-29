@@ -28,9 +28,9 @@ export default observer((): Node =>
   return (
     <div className="App">
       <h1>{rootStore.invoice.isPaid ? 'Paid' : 'Not Paid'}</h1>
-      {! rootStore.invoice.itemList &&
-        <button onClick={() => rootStore.invoice.markPaid()}>Pay</button>
-      }
+
+      <button onClick={() => rootStore.invoice.markPaid()}>Pay</button>
+
 
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">

@@ -6,7 +6,7 @@ import { persist } from 'mobx-persist';
 
 export default class ItemList
 {
-   @persist('object', Item) @observable items: Item[] = [];
+   @persist('list', Item) @observable items: Item[] = [];
 
    @action add(item: Item)
    {
