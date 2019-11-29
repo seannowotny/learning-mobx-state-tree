@@ -17,4 +17,4 @@ const hydrate = create({
    jsonify: true
 });
 
-hydrate('rootStore', rootStore).then(() => console.log('someStore has been hydrated'));
+hydrate('rootStore', rootStore).then(() => console.log('rootStore has been hydrated'));
