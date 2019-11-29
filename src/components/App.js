@@ -1,13 +1,14 @@
 // @flow
 
 import React from 'react';
+import type { Node } from 'react';
 import './App.css';
 import { observer } from 'mobx-react-lite';
 import { rootStore } from '../stores/rootStore';
 import ItemModel from '../stores/models/Item';
 import Item from './Item';
 
-export default observer(() =>
+export default observer((): Node =>
 {
   const handleSubmit = (e: any) =>
   {
@@ -17,12 +18,7 @@ export default observer(() =>
     const quantity = e.target.quantity.value;
     const price = e.target.price.value;
 
-    const itemModel = new ItemModel({
-      parent: rootStore.invoice.itemList,
-      name: name, 
-      quantity: parseInt(quantity, 10), 
-      price: parseFloat(price)
-    });
+    const itemModel = new ItemModel(name, parseInt(quantity, 10), parseFloat(price));
 
     rootStore.invoice.itemList.add(itemModel);
     e.target.reset();
@@ -59,7 +55,7 @@ export default observer(() =>
 
       <ul>
         {rootStore.invoice.itemList.items.map((item: Item, i: number) => (
-          <Item item={item} key={i} />
+          <Item item={item} itemList={rootStore.invoice.itemList} key={i} />
         ))}
       </ul>
     </div>

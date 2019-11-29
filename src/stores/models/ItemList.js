@@ -2,10 +2,11 @@
 
 import Item from './Item';
 import { observable, action, computed } from 'mobx';
+import { persist } from 'mobx-persist';
 
 export default class ItemList
 {
-   @observable items: Item[] = [];
+   @persist('object', Item) @observable items: Item[] = [];
 
    @action add(item: Item)
    {

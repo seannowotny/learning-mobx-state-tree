@@ -3,6 +3,7 @@
 import { action, observable } from 'mobx';
 import ItemList from './models/ItemList';
 import { RootStore } from './rootStore';
+import { persist } from 'mobx-persist';
 
 export default class Invoice
 {
@@ -11,11 +12,11 @@ export default class Invoice
    //    this.rootStore = rootStore;
    // }
 
-   @observable rootStore: RootStore;
+   // @observable rootStore: RootStore;
    
-   @observable currency: string = 'CAD';
-   @observable isPaid: boolean = false;
-   @observable itemList: ItemList = new ItemList();
+   @persist @observable currency: string = 'CAD';
+   @persist @observable isPaid: boolean = false;
+   @persist('object', ItemList) @observable itemList: ItemList = new ItemList();
 
    @action markPaid(): void
    {
